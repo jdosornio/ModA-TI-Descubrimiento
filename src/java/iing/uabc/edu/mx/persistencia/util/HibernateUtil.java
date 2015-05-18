@@ -24,16 +24,11 @@ public class HibernateUtil {
    
 
     static {    
-     
-       
          Configuration cfg = new Configuration().configure("hibernate.cfg.xml");         
         StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
         sb.applySettings(cfg.getProperties());
         StandardServiceRegistry standardServiceRegistry = sb.build();                   
         sessionFactory = cfg.buildSessionFactory(standardServiceRegistry);
-       
-       
-       
     }
 
     public static SessionFactory getSessionFactory() {
@@ -58,7 +53,7 @@ public class HibernateUtil {
             Session s = (Session) threadSession.get();
             threadSession.set(null);
             if (s != null && s.isOpen()) {
-//                s.flush();
+                s.flush();
                 s.close();
             }
         } catch (HibernateException ex) {

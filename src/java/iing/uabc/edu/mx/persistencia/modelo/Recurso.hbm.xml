@@ -10,17 +10,17 @@
     <property name="descUrl" type="string">
       <column length="500" name="desc_url" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="registros" table="registro">
+    <set fetch="select" inverse="true" lazy="false" name="registros" table="registro">
       <key>
         <column name="id_recurso" not-null="true"/>
       </key>
       <one-to-many class="iing.uabc.edu.mx.persistencia.modelo.Registro"/>
     </set>
-    <set fetch="select" inverse="false" lazy="true" name="usuarios" table="usuario_recurso">
+    <set fetch="select" inverse="false" lazy="false" name="usuarios" table="usuario_recurso">
       <key>
         <column name="id_recurso" not-null="true"/>
       </key>
-      <many-to-many entity-name="mx.edumat.modati.servicios.modelo.Usuario">
+      <many-to-many entity-name="iing.uabc.edu.mx.persistencia.modelo.Usuario">
         <column name="id_usuario" not-null="true"/>
       </many-to-many>
     </set>

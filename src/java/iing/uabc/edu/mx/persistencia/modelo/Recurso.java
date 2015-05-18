@@ -1,6 +1,4 @@
 package iing.uabc.edu.mx.persistencia.modelo;
-// Generated 18/05/2015 06:41:42 AM by Hibernate Tools 4.3.1
-
 
 import java.util.HashSet;
 import java.util.Set;
@@ -50,6 +48,7 @@ public class Recurso  implements java.io.Serializable {
     public void setRegistros(Set registros) {
         this.registros = registros;
     }
+    
     public Set getUsuarios() {
         return this.usuarios;
     }
@@ -57,9 +56,6 @@ public class Recurso  implements java.io.Serializable {
     public void setUsuarios(Set usuarios) {
         this.usuarios = usuarios;
     }
-
-
-
 
 }
 

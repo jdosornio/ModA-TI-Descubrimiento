@@ -5,7 +5,7 @@
  */
 package iing.uabc.edu.mx.negocio.delegate;
 
-import iing.uabc.edu.mx.persistencia.dao.ServiceLocator;
+import iing.uabc.edu.mx.negocio.facade.ServiceFacadeLocator;
 import java.util.List;
 
 /**
@@ -18,26 +18,26 @@ public class BaseDELEGATE {
     }
     
     public void setEntity(Class clazz){
-        ServiceLocator.getInstance().setEntity(clazz);
+        ServiceFacadeLocator.getInstance().setEntity(clazz);
     }
     
     public void save(Object o){
-        ServiceLocator.getInstance().saveOrUpdate(o);
+        ServiceFacadeLocator.getInstance().save(o);
     }
     
     public void update(Object o){
-        ServiceLocator.getInstance().saveOrUpdate(o);        
+        ServiceFacadeLocator.getInstance().update(o);        
     }
     
-    public void delete(Object o){
-        ServiceLocator.getInstance().delete(o);
+    public void delete(int id){
+        ServiceFacadeLocator.getInstance().delete(find(id));
     }
     
     public Object find(int id){
-        return ServiceLocator.getInstance().find(id);
+        return ServiceFacadeLocator.getInstance().find(id);
     }
     
     public List<Object> findAll(){
-        return ServiceLocator.getInstance().findAll();
+        return ServiceFacadeLocator.getInstance().findAll();
     }
 }

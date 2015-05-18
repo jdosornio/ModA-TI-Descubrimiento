@@ -6,11 +6,108 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+        </script>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body>        
+        <h2>Prueba Modati: Recursos</h2>
+        Recurso: <input type="text" id="url"/>
+        <button type="button" id="guardar">Guardar</button>
+        <button type="button" id="mod">Modificar</button>
+        ID: <input type="text" id="id"/>
+        <button type="button" id="buscar">Buscar</button>
+        <button type="button" id="buscarTodos">Buscar Todos</button>
+        <button type="button" id="eliminar">Eliminar</button>
+        <div id="todos"></div>
+        <script type="text/javascript">
+            jQuery("#guardar").click(function(){
+                var url = jQuery("#url").val();
+                var recurso = {"descUrl":url};
+                jQuery.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso",
+                    data: JSON.stringify(recurso),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg){
+                    },
+                    error: function(msg){
+                    }                    
+                });
+            });
+            
+            jQuery("#buscar").click(function(){
+                var id = jQuery("#id").val();
+                jQuery.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/" + id,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg){
+                        jQuery("#url").val(msg.descUrl);
+                    },
+                    error: function(msg){
+                        console.log(msg.responseText);
+                    }                    
+                });
+            });
+            
+            jQuery("#eliminar").click(function(){
+                var id = jQuery("#id").val();
+                var recurso = {"id": id};
+                jQuery.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/" + id,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg){
+                        alert("Eliminacion exitosa");
+                    },
+                    error: function(msg){
+                        console.log(msg.responseText);
+                    }                    
+                });
+            });
+            
+            jQuery("#mod").click(function(){
+                var id = jQuery("#id").val();
+                var url = jQuery("#url").val();
+                var recurso = {"descUrl": url};
+                jQuery.ajax({
+                    type: "PUT",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/" + id,
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(recurso),
+                    dataType: "json",
+                    success: function(msg){
+                        alert("Actualizacion exitosa");
+                    },
+                    error: function(msg){
+                        console.log(msg.responseText);
+                    }                    
+                });
+            });
+            
+            jQuery("#buscarTodos").click(function(){
+                jQuery.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg){
+                        var div = jQuery("#todos");
+                        for(var i = 0; i < msg.length; i++){
+                            div.append("<br>ID: " + msg[i].id + " URL: " + msg[i].descUrl);
+                        }
+                    },
+                    error: function(msg){
+                    }                    
+                });
+            });
+            
+            
+        </script>
     </body>
 </html>

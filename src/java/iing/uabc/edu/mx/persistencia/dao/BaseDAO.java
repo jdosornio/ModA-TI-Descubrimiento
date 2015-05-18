@@ -51,7 +51,8 @@ public class BaseDAO<T> implements InterfaceDAO<T> {
         try{
             HibernateUtil.getSession();
             HibernateUtil.beingTransaccion();
-            t = (T) HibernateUtil.getSession().load(clazz, id);
+            t = (T) HibernateUtil.getSession().get(clazz, id);
+            System.out.println("Buscando ID: " + id);
 //            HibernateUtil.commitTransaction();
         }catch(HibernateException e){
             HibernateUtil.rollbackTransaction();
@@ -67,7 +68,8 @@ public class BaseDAO<T> implements InterfaceDAO<T> {
         try{
             HibernateUtil.getSession();
             HibernateUtil.beingTransaccion();
-            HibernateUtil.getSession().createCriteria("from " + clazz.getName());
+            ts = HibernateUtil.getSession().createCriteria(clazz.getName()).list();
+            System.out.println("Buscando todos");
 //            HibernateUtil.commitTransaction();
         }catch(HibernateException e){
             HibernateUtil.rollbackTransaction();

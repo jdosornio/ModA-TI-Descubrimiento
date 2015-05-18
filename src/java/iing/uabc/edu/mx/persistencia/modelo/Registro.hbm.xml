@@ -29,7 +29,7 @@
       <key>
         <column name="id_registro" not-null="true"/>
       </key>
-      <many-to-many entity-name="mx.edumat.modati.servicios.modelo.Busqueda">
+      <many-to-many entity-name="iing.uabc.edu.mx.persistencia.modelo.Busqueda">
         <column name="id_busqueda" not-null="true"/>
       </many-to-many>
     </set>
