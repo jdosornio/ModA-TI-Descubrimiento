@@ -8,11 +8,21 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password"/>
     <property name="hibernate.show_sql">true</property>
-    <mapping resource="mx/edumat/modati/servicios/modelo/Usuario.hbm.xml"/>
-    <mapping resource="mx/edumat/modati/servicios/modelo/Proceso.hbm.xml"/>
-    <mapping resource="mx/edumat/modati/servicios/modelo/Contexto.hbm.xml"/>
-    <mapping resource="mx/edumat/modati/servicios/modelo/Busqueda.hbm.xml"/>
-    <mapping resource="mx/edumat/modati/servicios/modelo/Registro.hbm.xml"/>
-    <mapping resource="mx/edumat/modati/servicios/modelo/Recurso.hbm.xml"/>
+    <!-- Configuración del pool de conexiones-->
+    <property name="c3p0.autoCommitOnClose">true</property>
+    <property name="c3p0.acquire_increment">1</property>
+    <property name="c3p0.initialPoolSize">5</property>
+    <property name="c3p0.idle_test_period">100</property>
+    <!-- seconds -->
+    <property name="c3p0.max_size">50</property>
+    <property name="c3p0.max_statements">0</property>
+    <property name="c3p0.min_size">5</property>
+    <property name="c3p0.timeout">100</property>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Usuario.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Proceso.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Contexto.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Busqueda.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Registro.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Recurso.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
