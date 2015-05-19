@@ -24,44 +24,32 @@ and open the template in the editor.
         <script type="text/javascript">
             jQuery("#guardar").click(function(){
                 var url = jQuery("#url").val();
-                var recurso = {"descUrl":url};
-                jQuery.ajax({
-                    type: "POST",
-                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso",
-                    data: JSON.stringify(recurso),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(msg){
-                    },
-                    error: function(msg){
-                    }                    
-                });
+                var recurso = {
+                    "descUrl": url
+                };
+                var info = {
+                    "class":"Recurso",
+                    "entity":recurso
+                };
+                jQuery.post("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/" + "Recurso",
+                    {request: JSON.stringify(recurso) });
             });
             
             jQuery("#buscar").click(function(){
                 var id = jQuery("#id").val();
-                jQuery.ajax({
-                    type: "GET",
-                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/" + id,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(msg){
-                        jQuery("#url").val(msg.descUrl);
-                    },
-                    error: function(msg){
-                        console.log(msg.responseText);
-                    }                    
-                });
+                jQuery.get("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/Recurso/" + id,
+                            {}, function(msg){
+                                var obj = JSON.parse(msg);
+                                var resultEntity = obj[Object.keys(obj)];
+                                jQuery("#url").val(resultEntity.descUrl);
+                            });
             });
             
             jQuery("#eliminar").click(function(){
                 var id = jQuery("#id").val();
-                var recurso = {"id": id};
                 jQuery.ajax({
                     type: "DELETE",
-                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/" + id,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/Recurso/" + id,
                     success: function(msg){
                         alert("Eliminacion exitosa");
                     },
@@ -77,10 +65,8 @@ and open the template in the editor.
                 var recurso = {"descUrl": url};
                 jQuery.ajax({
                     type: "PUT",
-                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/" + id,
-                    contentType: "application/json; charset=utf-8",
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/Recurso/" + id,
                     data: JSON.stringify(recurso),
-                    dataType: "json",
                     success: function(msg){
                         alert("Actualizacion exitosa");
                     },
@@ -91,20 +77,18 @@ and open the template in the editor.
             });
             
             jQuery("#buscarTodos").click(function(){
-                jQuery.ajax({
-                    type: "GET",
-                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/recurso/",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(msg){
-                        var div = jQuery("#todos");
-                        for(var i = 0; i < msg.length; i++){
-                            div.append("<br>ID: " + msg[i].id + " URL: " + msg[i].descUrl);
-                        }
-                    },
-                    error: function(msg){
-                    }                    
-                });
+                jQuery.get("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/Recurso",
+                            {}, function(msg){
+                                var objList = JSON.parse(msg);
+                                var list = objList["list"];
+                                var objects = list[Object.keys(list)[0]];
+                                var resultEntities = objects[Object.keys(objects)];
+                                var div = jQuery("#todos");
+                                for (var i = 0; i < resultEntities.length; i++) {
+                                    div.append("<br>ID: " + resultEntities[i].id + 
+                                            " URL: " + resultEntities[i].descUrl);
+                                }
+                            });
             });
             
             

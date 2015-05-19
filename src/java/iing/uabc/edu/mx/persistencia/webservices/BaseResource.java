@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -28,156 +29,70 @@ import org.codehaus.jettison.json.JSONObject;
  * @author donniestorm
  */
 @Stateless
-@Path("/base")
+@Path("base")
 public class BaseResource {
 
     private static final String ENTITY_PACKAGE = "iing.uabc.edu.mx.persistencia.modelo.";
-
-    @POST
-    public void saveEntity(@FormParam("request") String request) {
-
+    private String className;
+    
+    private void setEntity(String clazz){
         try {
-            //Get json object
-            JSONObject jsonObj = new JSONObject(request);
-
-            //Attribute class contains the class object
-            String className = jsonObj.getString("class");
-
-            className = ENTITY_PACKAGE + className;
-
-            //entity attribute contains the entity in json to be saved
-            String jsonEntity = jsonObj.getString("entity");
-
-            //Prepare json string to be parsed into an entity object
-            jsonEntity = "{\"" + className + "\":" + jsonEntity + "}";
-
-            XStream xstream = new XStream(new JettisonMappedXmlDriver());
-
-            //Obtain the object and the class for that object
-            Object entity = xstream.fromXML(jsonEntity);
-            Class clazz = Class.forName(className);
-
-            ServiceDelegateLocator.getInstance().setEntity(clazz);
-            ServiceDelegateLocator.getInstance().save(entity);
-
-        } catch (JSONException | ClassNotFoundException ex) {
+            this.className = ENTITY_PACKAGE + clazz;
+            Class claz = Class.forName(className);
+            ServiceDelegateLocator.getInstance().setEntity(claz);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(BaseResource.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @POST    
+    @Path("{class}")
+    public void saveEntity(@PathParam("class") String clazz, @FormParam("request") String request) {
+        setEntity(clazz);
+        request = "{\"" + className + "\":" + request + "}";
+
+        XStream xstream = new XStream(new JettisonMappedXmlDriver());
+
+        Object entity = xstream.fromXML(request);
+        ServiceDelegateLocator.getInstance().save(entity);
     }
 
     @GET
-    public String findEntity(@QueryParam("request") String request) {
-        String response = "";
-
-        try {
-            //Get json object
-            JSONObject jsonObj = new JSONObject(request);
-
-            //Attribute class contains the class object
-            String className = jsonObj.getString("class");
-
-            className = ENTITY_PACKAGE + className;
-
-            //Obtain the class of the object
-            Class clazz = Class.forName(className);
-
-            switch (jsonObj.getString("action")) {
-
-                case "findAll":
-                    response = findAll(clazz);
-                    break;
-
-                case "findById":
-                    int id = jsonObj.getInt("id");
-                    response = findById(clazz, id);
-
-                    break;
-
-                default:
-                    System.out.println("No action for that");
-            }
-
-        } catch (JSONException | ClassNotFoundException ex) {
-            Logger.getLogger(BaseResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return response;
-    }
-
-    private String findAll(Class clazz) {
-
-        ServiceDelegateLocator.getInstance().setEntity(clazz);
+    @Path("{class}")
+    public String findAll(@PathParam("class") String clazz) {
+        setEntity(clazz);
         List entities = ServiceDelegateLocator.getInstance().findAll();
-
         XStream xstream = new XStream(new JettisonMappedXmlDriver());
-
-        System.out.println(xstream.toXML(entities));
-
         return xstream.toXML(entities);
     }
 
-    private String findById(Class clazz, int id) {
-
-        ServiceDelegateLocator.getInstance().setEntity(clazz);
+    @GET
+    @Path("{class}/{id}")
+    public String findById(@PathParam("class") String clazz,
+            @PathParam("id") Integer id) {
+        setEntity(clazz);
         Object entity = ServiceDelegateLocator.getInstance().find(id);
-
         XStream xstream = new XStream(new JettisonMappedXmlDriver());
-
-        System.out.println(xstream.toXML(entity));
-
         return xstream.toXML(entity);
     }
 
     @PUT
-    @Path("{id}")
-    public void updateEntity(@PathParam("id") Integer id, String request) {
-
-        try {
-            //Get json object
-            JSONObject jsonObj = new JSONObject(request);
-
-            //Attribute class contains the class object
-            String className = jsonObj.getString("class");
-
-            className = ENTITY_PACKAGE + className;
-
-            //entity attribute contains the entity in json to be updated
-            String jsonEntity = jsonObj.getString("entity");
-
-            //Prepare json string to be parsed into an entity object
-            jsonEntity = "{\"" + className + "\":" + jsonEntity + "}";
-
-            XStream xstream = new XStream(new JettisonMappedXmlDriver());
-
-            //Obtain the object and the class for that object
-            Object entity = xstream.fromXML(jsonEntity);
-            Class clazz = Class.forName(className);
-
-            ServiceDelegateLocator.getInstance().setEntity(clazz);
-            ServiceDelegateLocator.getInstance().update(entity);
-
-        } catch (JSONException | ClassNotFoundException ex) {
-            Logger.getLogger(BaseResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Path("{class}/{id}")
+    public void updateEntity(@PathParam("class") String clazz,
+            @PathParam("id") Integer id, String request) {
+        setEntity(clazz);
+        request = "{\"" + className + "\":" + request + "}";
+        XStream xstream = new XStream(new JettisonMappedXmlDriver());
+        Object entity = xstream.fromXML(request);
+        ServiceDelegateLocator.getInstance().update(entity);
     }
     
     @DELETE
-    @Path("{id},{className}")
-    public void deleteEntity(@PathParam("id")Integer id, @PathParam("className")
-            String className) {
-        
-        
-        try {
-            className = ENTITY_PACKAGE + className;
-            Class clazz = Class.forName(className);
-            
-            ServiceDelegateLocator.getInstance().setEntity(clazz);
-            //Delete object
-            ServiceDelegateLocator.getInstance().delete(id);
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BaseResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Path("{class}/{id}")
+    public void deleteEntity(@PathParam("class") String clazz, 
+            @PathParam("id")Integer id) {
+        setEntity(clazz);
+        ServiceDelegateLocator.getInstance().delete(id);
     }
 
 }
