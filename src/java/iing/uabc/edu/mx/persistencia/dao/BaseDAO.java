@@ -36,7 +36,7 @@ public class BaseDAO<T> implements InterfaceDAO<T> {
             HibernateUtil.getSession();
             HibernateUtil.beingTransaccion();
             HibernateUtil.getSession().saveOrUpdate(t);
-//            HibernateUtil.commitTransaction();
+            HibernateUtil.commitTransaction();
             System.out.println("Guardado exitoso");
         }catch(HibernateException e){
             HibernateUtil.rollbackTransaction();
@@ -52,6 +52,7 @@ public class BaseDAO<T> implements InterfaceDAO<T> {
             HibernateUtil.getSession();
             HibernateUtil.beingTransaccion();
             t = (T) HibernateUtil.getSession().get(clazz, id);
+            
             System.out.println("Buscando ID: " + id);
 //            HibernateUtil.commitTransaction();
         }catch(HibernateException e){
@@ -68,8 +69,10 @@ public class BaseDAO<T> implements InterfaceDAO<T> {
         try{
             HibernateUtil.getSession();
             HibernateUtil.beingTransaccion();
-            ts = HibernateUtil.getSession().createCriteria(clazz.getName()).list();
+            
+            ts = HibernateUtil.getSession().createCriteria(clazz).list();
             System.out.println("Buscando todos");
+
 //            HibernateUtil.commitTransaction();
         }catch(HibernateException e){
             HibernateUtil.rollbackTransaction();
@@ -86,7 +89,7 @@ public class BaseDAO<T> implements InterfaceDAO<T> {
             HibernateUtil.beingTransaccion();
             HibernateUtil.getSession().delete(t);
             System.out.println("Eliminado exitoso");
-//            HibernateUtil.commitTransaction();
+            HibernateUtil.commitTransaction();
         }catch(HibernateException e){
             HibernateUtil.rollbackTransaction();
         }finally{

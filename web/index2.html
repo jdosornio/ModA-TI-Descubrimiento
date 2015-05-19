@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Prueba web service</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+        </script>
+    </head>
+    <body>
+        <button onclick="post()">Post</button>
+        <button onclick="getAll()">Get All</button>
+        <button onclick="getById()">Get By Id</button>
+        <button onclick="put()">Put</button>
+        <button onclick="del()">Delete</button>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+        </script>
+        <script>
+
+            function post() {
+                var usuario = {
+                    user: "jdosornio",
+                    pass: "password"
+                };
+
+                var req = {
+                    class: "Usuario",
+                    entity: usuario
+                };
+
+                $.post("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base",
+                        {request: JSON.stringify(req)});
+            }
+
+            function getAll() {
+
+                var req = {
+                    action: "findAll",
+                    class: "Usuario"
+                };
+
+                $.get("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base",
+                        {request: JSON.stringify(req)}, function (response) {
+                    var objList = JSON.parse(response);
+
+                    //List property
+                    var list = objList["list"];
+
+                    //Get the actual array of objects
+                    var objects = list[Object.keys(list)[0]];
+
+                    //Array of result entities, the good one...
+                    var resultEntities = objects[Object.keys(objects)];
+
+                    for (var i = 0; i < resultEntities.length; i++) {
+                        alert("Id: " + resultEntities[i]["id"] + "\n" +
+                                "user: " + resultEntities[i]["user"] + "\n" +
+                                "pass: " + resultEntities[i]["pass"]);
+
+                    }
+                });
+            }
+
+            function getById() {
+                var req = {
+                    action: "findById",
+                    class: "Usuario",
+                    id: 5
+                };
+
+                $.get("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base",
+                        {request: JSON.stringify(req)}, function (response) {
+                    var obj = JSON.parse(response);
+
+                    //Get the actual entity
+                    var resultEntity = obj[Object.keys(obj)];
+
+                    alert("Id: " + resultEntity["id"] + "\nUser: " +
+                            resultEntity["user"] + "\nPass: " + resultEntity["pass"]);
+                });
+            }
+
+            function put() {
+
+                //To get the object to modify
+                var req = {
+                    action: "findById",
+                    class: "Usuario",
+                    id: 5
+                };
+
+                $.get("http://localhost:8080/ModA-TI_Descubrimiento/webresources/base",
+                        {request: JSON.stringify(req)}, function (response) {
+                    var obj = JSON.parse(response);
+
+                    //Get the actual entity
+                    var resultEntity = obj[Object.keys(obj)];
+
+                    var user = prompt("Ingresa un nuevo usuario", "");
+
+                    resultEntity["user"] = user;
+
+                    var req = {
+                        class: "Usuario",
+                        entity: JSON.stringify(resultEntity)
+                    };
+
+                    //Call put to update the object
+                    $.ajax({
+                        url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/"
+                                + resultEntity["id"],
+                        type: "PUT",
+                        data: JSON.stringify(req)
+                    });
+                });
+            }
+
+            function del() {
+                var id = parseInt(prompt("Ingresa el id a eliminar", ""));
+
+                var req = {
+                    class: "Usuario"
+                };
+                
+                //Call delete to delete the object
+                $.ajax({
+                    url: "http://localhost:8080/ModA-TI_Descubrimiento/webresources/base/"
+                            + id + ",Usuario",
+                    type: "DELETE"
+                });
+            }
+
+ 
+        </script>
+    </body>
+</html>

@@ -13,7 +13,7 @@ package iing.uabc.edu.mx.persistencia.dao;
  *
  * @author Alex
  */
-public class ServiceLocator {
+public class ServiceDaoLocator {
     
     private static BaseDAO baseDAO;    
     

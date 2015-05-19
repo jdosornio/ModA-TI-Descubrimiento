@@ -5,7 +5,7 @@
  */
 package iing.uabc.edu.mx.negocio.facade;
 
-import iing.uabc.edu.mx.persistencia.dao.ServiceLocator;
+import iing.uabc.edu.mx.persistencia.dao.ServiceDaoLocator;
 import java.util.List;
 
 /**
@@ -18,26 +18,26 @@ public class BaseFACADE {
     }
     
     public void setEntity(Class clazz){
-        ServiceLocator.getInstance().setEntity(clazz);
+        ServiceDaoLocator.getInstance().setEntity(clazz);
     }
     
     public void save(Object o){
-        ServiceLocator.getInstance().saveOrUpdate(o);
+        ServiceDaoLocator.getInstance().saveOrUpdate(o);
     }
     
     public void update(Object o){
-        ServiceLocator.getInstance().saveOrUpdate(o);        
+        ServiceDaoLocator.getInstance().saveOrUpdate(o);        
     }
     
     public void delete(Object o){
-        ServiceLocator.getInstance().delete(o);
+        ServiceDaoLocator.getInstance().delete(o);
     }
     
     public Object find(int id){
-        return ServiceLocator.getInstance().find(id);
+        return ServiceDaoLocator.getInstance().find(id);
     }
     
     public List<Object> findAll(){
-        return ServiceLocator.getInstance().findAll();
+        return ServiceDaoLocator.getInstance().findAll();
     }
 }

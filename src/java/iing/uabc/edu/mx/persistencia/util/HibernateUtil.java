@@ -51,11 +51,18 @@ public class HibernateUtil {
     public static void closeSession() {
         try {
             Session s = (Session) threadSession.get();
+            Transaction tx = (Transaction) threadTransaccion.get();
             threadSession.set(null);
+            
             if (s != null && s.isOpen()) {
-                s.flush();
+                if(tx != null) {
+                    s.flush();
+                }
                 s.close();
             }
+            
+            threadTransaccion.set(null);
+            
         } catch (HibernateException ex) {
             ex.printStackTrace();
             
