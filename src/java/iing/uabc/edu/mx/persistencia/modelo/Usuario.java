@@ -1,5 +1,5 @@
 package iing.uabc.edu.mx.persistencia.modelo;
-// Generated 18/05/2015 06:41:42 AM by Hibernate Tools 4.3.1
+// Generated Jun 8, 2015 9:23:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,8 +15,8 @@ public class Usuario  implements java.io.Serializable {
      private String user;
      private String pass;
      private Set registros = new HashSet(0);
-     private Set recursos = new HashSet(0);
-     private Set busquedas = new HashSet(0);
+     private Set usuarioRecursos = new HashSet(0);
+     private Set usuarioBusquedas = new HashSet(0);
 
     public Usuario() {
     }
@@ -26,12 +26,12 @@ public class Usuario  implements java.io.Serializable {
         this.user = user;
         this.pass = pass;
     }
-    public Usuario(String user, String pass, Set registros, Set recursos, Set busquedas) {
+    public Usuario(String user, String pass, Set registros, Set usuarioRecursos, Set usuarioBusquedas) {
        this.user = user;
        this.pass = pass;
        this.registros = registros;
-       this.recursos = recursos;
-       this.busquedas = busquedas;
+       this.usuarioRecursos = usuarioRecursos;
+       this.usuarioBusquedas = usuarioBusquedas;
     }
    
     public Integer getId() {
@@ -62,19 +62,19 @@ public class Usuario  implements java.io.Serializable {
     public void setRegistros(Set registros) {
         this.registros = registros;
     }
-    public Set getRecursos() {
-        return this.recursos;
+    public Set getUsuarioRecursos() {
+        return this.usuarioRecursos;
     }
     
-    public void setRecursos(Set recursos) {
-        this.recursos = recursos;
+    public void setUsuarioRecursos(Set usuarioRecursos) {
+        this.usuarioRecursos = usuarioRecursos;
     }
-    public Set getBusquedas() {
-        return this.busquedas;
+    public Set getUsuarioBusquedas() {
+        return this.usuarioBusquedas;
     }
     
-    public void setBusquedas(Set busquedas) {
-        this.busquedas = busquedas;
+    public void setUsuarioBusquedas(Set usuarioBusquedas) {
+        this.usuarioBusquedas = usuarioBusquedas;
     }
 
 

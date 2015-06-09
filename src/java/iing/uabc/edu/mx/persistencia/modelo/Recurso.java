@@ -1,4 +1,6 @@
 package iing.uabc.edu.mx.persistencia.modelo;
+// Generated Jun 8, 2015 9:23:00 PM by Hibernate Tools 4.3.1
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +14,7 @@ public class Recurso  implements java.io.Serializable {
      private Integer id;
      private String descUrl;
      private Set registros = new HashSet(0);
-     private Set usuarios = new HashSet(0);
+     private Set usuarioRecursos = new HashSet(0);
 
     public Recurso() {
     }
@@ -21,10 +23,10 @@ public class Recurso  implements java.io.Serializable {
     public Recurso(String descUrl) {
         this.descUrl = descUrl;
     }
-    public Recurso(String descUrl, Set registros, Set usuarios) {
+    public Recurso(String descUrl, Set registros, Set usuarioRecursos) {
        this.descUrl = descUrl;
        this.registros = registros;
-       this.usuarios = usuarios;
+       this.usuarioRecursos = usuarioRecursos;
     }
    
     public Integer getId() {
@@ -48,14 +50,16 @@ public class Recurso  implements java.io.Serializable {
     public void setRegistros(Set registros) {
         this.registros = registros;
     }
-    
-    public Set getUsuarios() {
-        return this.usuarios;
+    public Set getUsuarioRecursos() {
+        return this.usuarioRecursos;
     }
     
-    public void setUsuarios(Set usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuarioRecursos(Set usuarioRecursos) {
+        this.usuarioRecursos = usuarioRecursos;
     }
+
+
+
 
 }
 

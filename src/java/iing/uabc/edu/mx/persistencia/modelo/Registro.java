@@ -1,5 +1,5 @@
 package iing.uabc.edu.mx.persistencia.modelo;
-// Generated 18/05/2015 06:41:42 AM by Hibernate Tools 4.3.1
+// Generated Jun 8, 2015 9:23:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,7 +19,7 @@ public class Registro  implements java.io.Serializable {
      private Recurso recurso;
      private Usuario usuario;
      private Date fecha;
-     private Set busquedas = new HashSet(0);
+     private Set registroBusquedas = new HashSet(0);
 
     public Registro() {
     }
@@ -32,13 +32,13 @@ public class Registro  implements java.io.Serializable {
         this.usuario = usuario;
         this.fecha = fecha;
     }
-    public Registro(Contexto contexto, Proceso proceso, Recurso recurso, Usuario usuario, Date fecha, Set busquedas) {
+    public Registro(Contexto contexto, Proceso proceso, Recurso recurso, Usuario usuario, Date fecha, Set registroBusquedas) {
        this.contexto = contexto;
        this.proceso = proceso;
        this.recurso = recurso;
        this.usuario = usuario;
        this.fecha = fecha;
-       this.busquedas = busquedas;
+       this.registroBusquedas = registroBusquedas;
     }
    
     public Integer getId() {
@@ -90,12 +90,12 @@ public class Registro  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public Set getBusquedas() {
-        return this.busquedas;
+    public Set getRegistroBusquedas() {
+        return this.registroBusquedas;
     }
     
-    public void setBusquedas(Set busquedas) {
-        this.busquedas = busquedas;
+    public void setRegistroBusquedas(Set registroBusquedas) {
+        this.registroBusquedas = registroBusquedas;
     }
 
 

@@ -1,5 +1,5 @@
 package iing.uabc.edu.mx.persistencia.modelo;
-// Generated 18/05/2015 06:41:42 AM by Hibernate Tools 4.3.1
+// Generated Jun 8, 2015 9:23:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,8 +13,8 @@ public class Busqueda  implements java.io.Serializable {
 
      private Integer id;
      private String descTermino;
-     private Set registros = new HashSet(0);
-     private Set usuarios = new HashSet(0);
+     private Set registroBusquedas = new HashSet(0);
+     private Set usuarioBusquedas = new HashSet(0);
 
     public Busqueda() {
     }
@@ -23,10 +23,10 @@ public class Busqueda  implements java.io.Serializable {
     public Busqueda(String descTermino) {
         this.descTermino = descTermino;
     }
-    public Busqueda(String descTermino, Set registros, Set usuarios) {
+    public Busqueda(String descTermino, Set registroBusquedas, Set usuarioBusquedas) {
        this.descTermino = descTermino;
-       this.registros = registros;
-       this.usuarios = usuarios;
+       this.registroBusquedas = registroBusquedas;
+       this.usuarioBusquedas = usuarioBusquedas;
     }
    
     public Integer getId() {
@@ -43,19 +43,19 @@ public class Busqueda  implements java.io.Serializable {
     public void setDescTermino(String descTermino) {
         this.descTermino = descTermino;
     }
-    public Set getRegistros() {
-        return this.registros;
+    public Set getRegistroBusquedas() {
+        return this.registroBusquedas;
     }
     
-    public void setRegistros(Set registros) {
-        this.registros = registros;
+    public void setRegistroBusquedas(Set registroBusquedas) {
+        this.registroBusquedas = registroBusquedas;
     }
-    public Set getUsuarios() {
-        return this.usuarios;
+    public Set getUsuarioBusquedas() {
+        return this.usuarioBusquedas;
     }
     
-    public void setUsuarios(Set usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuarioBusquedas(Set usuarioBusquedas) {
+        this.usuarioBusquedas = usuarioBusquedas;
     }
 
 

@@ -11,22 +11,24 @@
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <property name="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider </property>
     <property name="hibernate.show_sql">true</property>
-    
     <!-- Configuración del pool de conexiones-->
     <property name="c3p0.autoCommitOnClose">true</property>
     <property name="c3p0.acquire_increment">1</property>
     <property name="c3p0.initialPoolSize">5</property>
-    <property name="c3p0.idle_test_period">100</property><!-- seconds -->
+    <property name="c3p0.idle_test_period">100</property>
+    <!-- seconds -->
     <property name="c3p0.max_size">50</property>
     <property name="c3p0.max_statements">0</property>
     <property name="c3p0.min_size">5</property>
     <property name="c3p0.timeout">100</property>
-    
     <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Usuario.hbm.xml"/>
     <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Proceso.hbm.xml"/>
     <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Contexto.hbm.xml"/>
     <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Busqueda.hbm.xml"/>
     <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Registro.hbm.xml"/>
     <mapping resource="iing/uabc/edu/mx/persistencia/modelo/Recurso.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/UsuarioRecurso.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/UsuarioBusqueda.hbm.xml"/>
+    <mapping resource="iing/uabc/edu/mx/persistencia/modelo/RegistroBusqueda.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
