@@ -95,4 +95,7 @@ public class BaseResource {
         ServiceDelegateLocator.getInstance().delete(id);
     }
 
+    /**
+     * Probar con 
+     */
 }

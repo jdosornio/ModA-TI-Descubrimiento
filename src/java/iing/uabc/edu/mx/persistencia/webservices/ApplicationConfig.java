@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iing.uabc.edu.mx.persistencia.service;
+package iing.uabc.edu.mx.persistencia.webservices;
 
 import javax.ws.rs.core.Application;
 
