@@ -2,7 +2,7 @@ package test;
 
 
 import iing.uabc.edu.mx.negocio.delegate.ServiceDelegateLocator;
-import iing.uabc.edu.mx.persistencia.modelo.UsuarioRecurso;
+import iing.uabc.edu.mx.persistencia.modelo.UsuarioBusqueda;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +17,7 @@ import iing.uabc.edu.mx.persistencia.modelo.UsuarioRecurso;
 public class Test {
     
     public static void main(String[] args) {
-        ServiceDelegateLocator.getInstance().setEntity(UsuarioRecurso.class);
+        ServiceDelegateLocator.getInstance().setEntity(UsuarioBusqueda.class);
         ServiceDelegateLocator.getInstance().findAll();
     }
 }

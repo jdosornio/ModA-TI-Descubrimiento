@@ -12,6 +12,7 @@ public class UsuarioRecurso  implements java.io.Serializable {
      private int id;
      private Recurso recurso;
      private Usuario usuario;
+     private int visitas;
 
     public UsuarioRecurso() {
     }
@@ -44,7 +45,13 @@ public class UsuarioRecurso  implements java.io.Serializable {
         this.usuario = usuario;
     }
 
-
+    public int getVisitas() {
+        return visitas;
+    }
+    
+    public void setVisitas(int visitas) {
+        this.visitas = visitas;
+    }
 
 
 }

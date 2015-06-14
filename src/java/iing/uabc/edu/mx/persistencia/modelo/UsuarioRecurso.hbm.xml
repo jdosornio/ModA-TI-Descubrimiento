@@ -14,5 +14,8 @@
         <many-to-one name="usuario" class="iing.uabc.edu.mx.persistencia.modelo.Usuario" fetch="select">
             <column name="id_usuario" not-null="true" />
         </many-to-one>
+        <property name="visitas" type="int">
+            <column name="visitas" length="11" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

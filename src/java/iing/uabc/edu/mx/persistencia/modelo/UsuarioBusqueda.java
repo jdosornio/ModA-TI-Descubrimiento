@@ -12,7 +12,8 @@ public class UsuarioBusqueda  implements java.io.Serializable {
      private int id;
      private Busqueda busqueda;
      private Usuario usuario;
-
+     private int veces;
+     
     public UsuarioBusqueda() {
     }
 
@@ -43,10 +44,13 @@ public class UsuarioBusqueda  implements java.io.Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-
-
+    
+    public int getVeces() {
+        return veces;
+    }
+    
+    public void setVeces(int veces) {
+        this.veces = veces;
+    }
 
 }
-
-
