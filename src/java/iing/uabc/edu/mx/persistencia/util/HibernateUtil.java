@@ -19,9 +19,7 @@ public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
     private static final ThreadLocal threadSession = new ThreadLocal();
-    private static final ThreadLocal threadTransaccion = new ThreadLocal();
-    
-   
+    private static final ThreadLocal threadTransaccion = new ThreadLocal();   
 
     static {    
          Configuration cfg = new Configuration().configure("hibernate.cfg.xml");         
