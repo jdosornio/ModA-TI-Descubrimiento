@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 8, 2015 9:23:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="iing.uabc.edu.mx.persistencia.modelo.UsuarioBusqueda" table="usuario_busqueda" catalog="bddescubrimiento" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="busqueda" class="iing.uabc.edu.mx.persistencia.modelo.Busqueda" fetch="select">
+            <column name="id_busqueda" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="iing.uabc.edu.mx.persistencia.modelo.Usuario" fetch="select">
+            <column name="id_usuario" not-null="true" />
+        </many-to-one>
+        <property name="veces" type="int">
+            <column name="veces" length="11" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,5 +1,5 @@
 package iing.uabc.edu.mx.persistencia.modelo;
-// Generated 18/05/2015 06:41:42 AM by Hibernate Tools 4.3.1
+// Generated Jun 8, 2015 9:23:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -44,14 +44,14 @@ public class Busqueda  implements java.io.Serializable {
     public void setDescTermino(String descTermino) {
         this.descTermino = descTermino;
     }
-    public Set getRegistros() {
+    public Set<Registro> getRegistros() {
         return this.registros;
     }
     
     public void setRegistros(Set<Registro> registros) {
         this.registros = registros;
     }
-    public Set getUsuarios() {
+    public Set<Usuario> getUsuarios() {
         return this.usuarios;
     }
     

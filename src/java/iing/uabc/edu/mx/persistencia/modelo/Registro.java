@@ -1,5 +1,5 @@
 package iing.uabc.edu.mx.persistencia.modelo;
-// Generated 18/05/2015 06:41:42 AM by Hibernate Tools 4.3.1
+// Generated Jun 8, 2015 9:23:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -32,7 +32,7 @@ public class Registro  implements java.io.Serializable {
         this.usuario = usuario;
         this.fecha = fecha;
     }
-    public Registro(Contexto contexto, Proceso proceso, Recurso recurso, Usuario usuario, Date fecha, Set busquedas) {
+    public Registro(Contexto contexto, Proceso proceso, Recurso recurso, Usuario usuario, Date fecha, Set<Busqueda> busquedas) {
        this.contexto = contexto;
        this.proceso = proceso;
        this.recurso = recurso;
