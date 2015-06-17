@@ -13,8 +13,8 @@ public class Busqueda  implements java.io.Serializable {
 
      private Integer id;
      private String descTermino;
-     private Set registros = new HashSet(0);
-     private Set usuarios = new HashSet(0);
+     private Set<Registro> registros = new HashSet(0);
+     private Set<Usuario> usuarios = new HashSet(0);
 
     public Busqueda() {
     }
@@ -23,7 +23,8 @@ public class Busqueda  implements java.io.Serializable {
     public Busqueda(String descTermino) {
         this.descTermino = descTermino;
     }
-    public Busqueda(String descTermino, Set registros, Set usuarios) {
+    
+    public Busqueda(String descTermino, Set<Registro> registros, Set<Usuario> usuarios) {
        this.descTermino = descTermino;
        this.registros = registros;
        this.usuarios = usuarios;
@@ -47,14 +48,14 @@ public class Busqueda  implements java.io.Serializable {
         return this.registros;
     }
     
-    public void setRegistros(Set registros) {
+    public void setRegistros(Set<Registro> registros) {
         this.registros = registros;
     }
     public Set getUsuarios() {
         return this.usuarios;
     }
     
-    public void setUsuarios(Set usuarios) {
+    public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
 

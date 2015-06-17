@@ -13,7 +13,7 @@ public class Contexto  implements java.io.Serializable {
 
      private Integer id;
      private String desc;
-     private Set registros = new HashSet(0);
+     private Set<Registro> registros = new HashSet(0);
 
     public Contexto() {
     }
@@ -22,7 +22,7 @@ public class Contexto  implements java.io.Serializable {
     public Contexto(String desc) {
         this.desc = desc;
     }
-    public Contexto(String desc, Set registros) {
+    public Contexto(String desc, Set<Registro> registros) {
        this.desc = desc;
        this.registros = registros;
     }
@@ -41,11 +41,11 @@ public class Contexto  implements java.io.Serializable {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-    public Set getRegistros() {
+    public Set<Registro> getRegistros() {
         return this.registros;
     }
     
-    public void setRegistros(Set registros) {
+    public void setRegistros(Set<Registro> registros) {
         this.registros = registros;
     }
 

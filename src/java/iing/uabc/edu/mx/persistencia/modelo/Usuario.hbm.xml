@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/05/2015 06:41:43 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 8, 2015 9:23:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="bddescubrimiento" name="iing.uabc.edu.mx.persistencia.modelo.Usuario" optimistic-lock="version" table="usuario">
     <id name="id" type="java.lang.Integer">
       <column name="id"/>
       <generator class="identity"/>
     </id>
-    <property name="user" type="string" unique="true">
-      <column length="45" name="user" not-null="true"/>
+    <property name="user" type="string">
+      <column length="45" name="user" not-null="true" unique="true"/>
     </property>
     <property name="pass" type="string">
       <column length="45" name="pass" not-null="true"/>
@@ -19,21 +19,17 @@
       </key>
       <one-to-many class="iing.uabc.edu.mx.persistencia.modelo.Registro"/>
     </set>
-    <set fetch="select" inverse="false" lazy="true" name="recursos" table="usuario_recurso">
+    <set fetch="select" inverse="true" lazy="true" name="recursos" table="usuario_recurso">
       <key>
         <column name="id_usuario" not-null="true"/>
       </key>
-      <many-to-many entity-name="iing.uabc.edu.mx.persistencia.modelo.Recurso">
-        <column name="id_recurso" not-null="true"/>
-      </many-to-many>
+      <many-to-many column="id_recurso" class="iing.uabc.edu.mx.persistencia.modelo.Recurso"/>
     </set>
-    <set fetch="select" inverse="false" lazy="true" name="busquedas" table="usuario_busqueda">
+    <set fetch="select" inverse="true" lazy="true" name="busquedas" table="usuario_busqueda">
       <key>
         <column name="id_usuario" not-null="true"/>
       </key>
-      <many-to-many entity-name="iing.uabc.edu.mx.persistencia.modelo.Busqueda">
-        <column name="id_busqueda" not-null="true"/>
-      </many-to-many>
+      <many-to-many column="id_busqueda" class="iing.uabc.edu.mx.persistencia.modelo.Busqueda"/>
     </set>
   </class>
 </hibernate-mapping>

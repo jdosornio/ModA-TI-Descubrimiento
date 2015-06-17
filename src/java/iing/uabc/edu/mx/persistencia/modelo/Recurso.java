@@ -11,8 +11,8 @@ public class Recurso  implements java.io.Serializable {
 
      private Integer id;
      private String descUrl;
-     private Set registros = new HashSet(0);
-     private Set usuarios = new HashSet(0);
+     private Set<Registro> registros = new HashSet(0);
+     private Set<Usuario> usuarios = new HashSet(0);
 
     public Recurso() {
     }
@@ -21,7 +21,8 @@ public class Recurso  implements java.io.Serializable {
     public Recurso(String descUrl) {
         this.descUrl = descUrl;
     }
-    public Recurso(String descUrl, Set registros, Set usuarios) {
+
+    public Recurso(String descUrl, Set<Registro> registros, Set<Usuario> usuarios) {
        this.descUrl = descUrl;
        this.registros = registros;
        this.usuarios = usuarios;
@@ -41,19 +42,19 @@ public class Recurso  implements java.io.Serializable {
     public void setDescUrl(String descUrl) {
         this.descUrl = descUrl;
     }
-    public Set getRegistros() {
+    public Set<Registro> getRegistros() {
         return this.registros;
     }
     
-    public void setRegistros(Set registros) {
+    public void setRegistros(Set<Registro> registros) {
         this.registros = registros;
     }
-    
-    public Set getUsuarios() {
+
+    public Set<Usuario> getUsuarios() {
         return this.usuarios;
     }
     
-    public void setUsuarios(Set usuarios) {
+    public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
 

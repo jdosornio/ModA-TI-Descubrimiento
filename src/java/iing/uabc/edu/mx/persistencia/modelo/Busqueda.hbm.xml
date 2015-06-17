@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/05/2015 06:41:43 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 8, 2015 9:23:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="bddescubrimiento" name="iing.uabc.edu.mx.persistencia.modelo.Busqueda" optimistic-lock="version" table="busqueda">
     <id name="id" type="java.lang.Integer">
@@ -10,21 +10,17 @@
     <property name="descTermino" type="string">
       <column length="200" name="desc_termino" not-null="true"/>
     </property>
-    <set fetch="select" inverse="false" lazy="true" name="registros" table="registro_busqueda">
+    <set fetch="select" inverse="true" lazy="true" name="registros" table="registro_busqueda">
       <key>
         <column name="id_busqueda" not-null="true"/>
       </key>
-      <many-to-many entity-name="iing.uabc.edu.mx.persistencia.modelo.Registro">
-        <column name="id_registro" not-null="true"/>
-      </many-to-many>
+      <many-to-many column="id_registro" class="iing.uabc.edu.mx.persistencia.modelo.Registro"/>
     </set>
-    <set fetch="select" inverse="false" lazy="true" name="usuarios" table="usuario_busqueda">
+    <set fetch="select" inverse="true" lazy="true" name="usuarios" table="usuario_busqueda">
       <key>
         <column name="id_busqueda" not-null="true"/>
       </key>
-      <many-to-many entity-name="iing.uabc.edu.mx.persistencia.modelo.Usuario">
-        <column name="id_usuario" not-null="true"/>
-      </many-to-many>
+      <many-to-many column="id_usuario" class="iing.uabc.edu.mx.persistencia.modelo.Usuario"/>
     </set>
   </class>
 </hibernate-mapping>

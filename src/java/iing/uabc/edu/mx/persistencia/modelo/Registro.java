@@ -19,7 +19,7 @@ public class Registro  implements java.io.Serializable {
      private Recurso recurso;
      private Usuario usuario;
      private Date fecha;
-     private Set busquedas = new HashSet(0);
+     private Set<Busqueda> busquedas = new HashSet(0);
 
     public Registro() {
     }
@@ -90,11 +90,12 @@ public class Registro  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public Set getBusquedas() {
+
+    public Set<Busqueda> getBusquedas() {
         return this.busquedas;
     }
     
-    public void setBusquedas(Set busquedas) {
+    public void setBusquedas(Set<Busqueda> busquedas) {
         this.busquedas = busquedas;
     }
 

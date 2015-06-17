@@ -13,7 +13,7 @@ public class Proceso  implements java.io.Serializable {
 
      private Integer id;
      private String desc;
-     private Set registros = new HashSet(0);
+     private Set<Registro> registros = new HashSet(0);
 
     public Proceso() {
     }
@@ -22,7 +22,7 @@ public class Proceso  implements java.io.Serializable {
     public Proceso(String desc) {
         this.desc = desc;
     }
-    public Proceso(String desc, Set registros) {
+    public Proceso(String desc, Set<Registro> registros) {
        this.desc = desc;
        this.registros = registros;
     }
@@ -45,7 +45,7 @@ public class Proceso  implements java.io.Serializable {
         return this.registros;
     }
     
-    public void setRegistros(Set registros) {
+    public void setRegistros(Set<Registro> registros) {
         this.registros = registros;
     }
 

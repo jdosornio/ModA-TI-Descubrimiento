@@ -14,9 +14,9 @@ public class Usuario  implements java.io.Serializable {
      private Integer id;
      private String user;
      private String pass;
-     private Set registros = new HashSet(0);
-     private Set recursos = new HashSet(0);
-     private Set busquedas = new HashSet(0);
+     private Set<Registro> registros = new HashSet(0);
+     private Set<Recurso> recursos = new HashSet(0);
+     private Set<Busqueda> busquedas = new HashSet(0);
 
     public Usuario() {
     }
@@ -26,7 +26,8 @@ public class Usuario  implements java.io.Serializable {
         this.user = user;
         this.pass = pass;
     }
-    public Usuario(String user, String pass, Set registros, Set recursos, Set busquedas) {
+    
+    public Usuario(String user, String pass, Set<Registro> registros, Set<Recurso> recursos, Set<Busqueda> busquedas) {
        this.user = user;
        this.pass = pass;
        this.registros = registros;
@@ -55,25 +56,27 @@ public class Usuario  implements java.io.Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    public Set getRegistros() {
+    public Set<Registro> getRegistros() {
         return this.registros;
     }
     
-    public void setRegistros(Set registros) {
+    public void setRegistros(Set<Registro> registros) {
         this.registros = registros;
     }
-    public Set getRecursos() {
+
+    public Set<Recurso> getRecursos() {
         return this.recursos;
     }
     
-    public void setRecursos(Set recursos) {
+    public void setRecursos(Set<Recurso> recursos) {
         this.recursos = recursos;
     }
-    public Set getBusquedas() {
+
+    public Set<Busqueda> getBusquedas() {
         return this.busquedas;
     }
     
-    public void setBusquedas(Set busquedas) {
+    public void setBusquedas(Set<Busqueda> busquedas) {
         this.busquedas = busquedas;
     }
 
