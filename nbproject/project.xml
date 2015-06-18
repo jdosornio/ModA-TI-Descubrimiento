@@ -18,10 +18,6 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.javax.json-1.0.4.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.jettison-1.2.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
