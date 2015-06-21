@@ -13,23 +13,5 @@
     <property name="pass" type="string">
       <column length="45" name="pass" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="registros" table="registro">
-      <key>
-        <column name="id_usuario" not-null="true"/>
-      </key>
-      <one-to-many class="iing.uabc.edu.mx.persistencia.modelo.Registro"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="recursos" table="usuario_recurso">
-      <key>
-        <column name="id_usuario" not-null="true"/>
-      </key>
-      <many-to-many column="id_recurso" class="iing.uabc.edu.mx.persistencia.modelo.Recurso"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="busquedas" table="usuario_busqueda">
-      <key>
-        <column name="id_usuario" not-null="true"/>
-      </key>
-      <many-to-many column="id_busqueda" class="iing.uabc.edu.mx.persistencia.modelo.Busqueda"/>
-    </set>
   </class>
 </hibernate-mapping>

@@ -26,11 +26,5 @@
         <property name="fecha" type="timestamp">
             <column name="fecha" length="19" not-null="true" />
         </property>
-        <set name="busquedas" table="registro_busqueda" inverse="true" fetch="select" lazy="false">
-            <key>
-                <column name="id_registro" not-null="true" />
-            </key>
-            <many-to-many column="id_busqueda" class="iing.uabc.edu.mx.persistencia.modelo.Busqueda" />
-        </set>
     </class>
 </hibernate-mapping>

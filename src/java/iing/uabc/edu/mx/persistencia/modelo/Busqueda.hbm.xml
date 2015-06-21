@@ -10,17 +10,5 @@
     <property name="descTermino" type="string">
       <column length="200" name="desc_termino" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="registros" table="registro_busqueda">
-      <key>
-        <column name="id_busqueda" not-null="true"/>
-      </key>
-      <many-to-many column="id_registro" class="iing.uabc.edu.mx.persistencia.modelo.Registro"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="usuarios" table="usuario_busqueda">
-      <key>
-        <column name="id_busqueda" not-null="true"/>
-      </key>
-      <many-to-many column="id_usuario" class="iing.uabc.edu.mx.persistencia.modelo.Usuario"/>
-    </set>
   </class>
 </hibernate-mapping>

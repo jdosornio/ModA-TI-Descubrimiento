@@ -1,6 +1,5 @@
 package test;
 
-import iing.uabc.edu.mx.negocio.delegate.ServiceDelegateLocator;
 import iing.uabc.edu.mx.persistencia.modelo.Busqueda;
 import iing.uabc.edu.mx.persistencia.modelo.Registro;
 import iing.uabc.edu.mx.vista.webservices.JsonUtil;
@@ -14,7 +13,7 @@ import iing.uabc.edu.mx.vista.webservices.JsonUtil;
 /**
  *
  * @author donniestorm
- */
+// */
 public class Test {
     
     public static void main(String[] args) {
@@ -28,8 +27,8 @@ public class Test {
                 "\nProceso: " + r.getProceso().getId() + " - " + r.getProceso().getDesc() +
                 "\nRecurso: " + r.getRecurso().getId() + " - " + r.getRecurso().getDescUrl()
                 );
-        for(Busqueda b : r.getBusquedas())
-            System.out.println("Busqueda: " + b.getId() + " - " + b.getDescTermino());
+//        for(Busqueda b : r.getBusquedas())
+//            System.out.println("Busqueda: " + b.getId() + " - " + b.getDescTermino());
         
 //        ServiceDelegateLocator.getInstance().setEntity(Registro.class);
 //        Registro r = (Registro) ServiceDelegateLocator.getInstance().find(1);

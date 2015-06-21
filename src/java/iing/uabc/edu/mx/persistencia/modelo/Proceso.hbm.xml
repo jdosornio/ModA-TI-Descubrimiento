@@ -11,11 +11,5 @@
         <property name="desc" type="string">
             <column name="desc" length="45" not-null="true" />
         </property>
-        <set name="registros" table="registro" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="id_proceso" not-null="true" />
-            </key>
-            <one-to-many class="iing.uabc.edu.mx.persistencia.modelo.Registro" />
-        </set>
     </class>
 </hibernate-mapping>

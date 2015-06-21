@@ -10,17 +10,5 @@
     <property name="descUrl" type="string">
       <column length="500" name="desc_url" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="registros" table="registro">
-      <key>
-        <column name="id_recurso" not-null="true"/>
-      </key>
-      <one-to-many class="iing.uabc.edu.mx.persistencia.modelo.Registro"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="usuarios" table="usuario_recurso">
-      <key>
-        <column name="id_recurso" not-null="true"/>
-      </key>
-      <many-to-many column="id_usuario" class="iing.uabc.edu.mx.persistencia.modelo.Recurso"/>
-    </set>
   </class>
 </hibernate-mapping>

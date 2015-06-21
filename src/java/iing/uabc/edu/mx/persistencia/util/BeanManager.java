@@ -78,6 +78,19 @@ public class BeanManager<T> {
         return fields;
     }
     
+    public Class getType(String propertyName) {
+        Class beanClazz;
+        Class type = null;
+        try {
+            beanClazz = bean.getBean().getClass();
+            type = beanClazz.getField(propertyName).getType();
+        } catch (NoSuchFieldException | SecurityException ex) {
+            Logger.getLogger(BeanManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return type;
+    }
+    
     public T getBean() {
         return (T) bean.getBean();
     }

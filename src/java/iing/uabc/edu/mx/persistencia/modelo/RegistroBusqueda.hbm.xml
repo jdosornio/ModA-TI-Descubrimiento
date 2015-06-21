@@ -8,10 +8,10 @@
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="busqueda" class="iing.uabc.edu.mx.persistencia.modelo.Busqueda" fetch="select">
+        <many-to-one name="busqueda" class="iing.uabc.edu.mx.persistencia.modelo.Busqueda" fetch="select" lazy="false">
             <column name="id_busqueda" not-null="true" />
         </many-to-one>
-        <many-to-one name="registro" class="iing.uabc.edu.mx.persistencia.modelo.Registro" fetch="select">
+        <many-to-one name="registro" class="iing.uabc.edu.mx.persistencia.modelo.Registro" fetch="select" lazy="false">
             <column name="id_registro" not-null="true" />
         </many-to-one>
     </class>
